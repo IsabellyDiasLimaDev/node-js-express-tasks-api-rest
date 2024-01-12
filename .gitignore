@@ -1,0 +1,8 @@
+node_modules/
+temp/
+build/
+dist/
+*.yml
+*.log
+.env
+.env.prod
