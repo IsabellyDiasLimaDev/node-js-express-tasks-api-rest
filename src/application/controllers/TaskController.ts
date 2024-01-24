@@ -1,11 +1,9 @@
 import { Request, Response } from "express";
-import { TaskService } from "../services/TaskService";
 import { TaskDTO } from "../../data/dtos/TaskDTO";
-import { Task } from "../../data/models/Task";
-import { UserMapper } from "../../data/dtos/mappers/UserMapper";
-import { UserService } from "../services/UserService";
 import { UserDto } from "../../data/dtos/UserDTO";
-import { User } from "../../data/models/User";
+import { Task } from "../../data/models/Task";
+import { TaskService } from "../services/TaskService";
+import { UserService } from "../services/UserService";
 
 export class TaskController {
   taskService = new TaskService();

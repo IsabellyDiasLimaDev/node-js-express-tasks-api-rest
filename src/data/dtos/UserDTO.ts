@@ -1,10 +1,11 @@
 import { TaskDTO } from './TaskDTO';
 
 export class UserDto {
-  public id: string;
+
   public name: string;
   public email: string;
   public password: string;
+  public id?: string;
   public tasks?: TaskDTO[];
 
   constructor(id: string, name: string, email: string, password: string, tasks?: TaskDTO[]) {

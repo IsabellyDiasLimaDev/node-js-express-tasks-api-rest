@@ -5,14 +5,20 @@ import { User } from "../../data/models/User";
 const { DBHOST, DBPORT, DBUSERNAME, DBPASSWORD, DBNAME } = process.env;
 
 export const typeOrmConfig = new DataSource({
-  type: "mariadb",
+  type: "postgres",
   host: DBHOST,
   port: Number(DBPORT),
-  username: DBUSERNAME,
-  password: DBPASSWORD,
-  database: DBNAME,
+  username: String(DBUSERNAME),
+  password: String(DBPASSWORD),
+  database: String(DBNAME),
   synchronize: true,
   logging: true,
-  entities: [Task, User],
+  entities: [User, Task],
 });
 
+typeOrmConfig.initialize()
+  .then(() => {
+    console.log("Data Source has been initialized!")
+  }).catch((err) => {
+    console.error("Error during Data Source initialization", err)
+  });

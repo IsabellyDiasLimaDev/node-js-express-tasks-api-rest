@@ -4,6 +4,11 @@ import { Task } from "./Task";
 @Entity("tbl_user")
 export class User {
   @PrimaryGeneratedColumn("uuid")
+  @Column({
+    name: "uuid",
+    type: "varchar",
+    length: 36
+  })
   public id: string;
   @Column({
     name: "user_name",
