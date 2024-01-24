@@ -5,7 +5,7 @@ import { User } from "../../data/models/User";
 const { DBHOST, DBPORT, DBUSERNAME, DBPASSWORD, DBNAME } = process.env;
 
 export const typeOrmConfig = new DataSource({
-  type: "mysql",
+  type: "mariadb",
   host: DBHOST,
   port: Number(DBPORT),
   username: DBUSERNAME,
@@ -15,3 +15,4 @@ export const typeOrmConfig = new DataSource({
   logging: true,
   entities: [Task, User],
 });
+

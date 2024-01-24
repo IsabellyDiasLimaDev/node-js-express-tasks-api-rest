@@ -1,25 +1,37 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Task } from "./Task";
 
-@Entity()
+@Entity("tbl_user")
 export class User {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn("uuid")
   public id: string;
-  @Column()
+  @Column({
+    name: "user_name",
+    type: "varchar",
+    length: 255
+  })
   public name: string;
-  @Column()
+    @Column({
+    name: "user_email",
+    type: "varchar",
+    length: 255
+  })
   public email: string;
-  @Column()
+    @Column({
+    name: "user_password",
+    type: "varchar",
+    length: 255
+  })
   public password: string;
   @OneToMany(() => Task, (task) => task.user)
-  public tasks: Task[];
+  public tasks?: Task[];
 
   constructor(
     id: string,
     name: string,
     email: string,
     password: string,
-    tasks: Task[],
+    tasks?: Task[],
   ) {
     this.id = id;
     this.name = name;

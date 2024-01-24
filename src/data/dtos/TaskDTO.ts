@@ -1,16 +1,16 @@
 export class TaskDTO {
-    public id: string;
+    public id?: string;
     public title: string;
-    public description: string;
-    public deadline: string;
+    public description?: string;
+    public deadline?: Date;
     public userId: string;
   
     constructor(
-      id: string,
       title: string,
-      description: string,
-      deadline: string,
       userId: string,
+      id?: string,
+      description?: string,
+      deadline?: Date
     ) {
       this.id = id;
       this.title = title;

@@ -7,30 +7,42 @@ import {
 } from "typeorm";
 import { User } from "./User";
 
-@Entity()
+@Entity("tbl_task")
 export class Task {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn("uuid")
   public id?: string;
 
-  @Column()
+  @Column({
+    name: "task_title",
+    type: "varchar",
+    length: 255,
+  })
   public title: string;
 
-  @Column()
-  public description: string;
+  @Column({
+    name: "task_description",
+    type: "text"
+  })
+  public description?: string;
 
-  @Column()
-  public deadline: string;
+  @Column({
+    name: "task_due_date",
+    type: "date"
+  })
+  public deadline?: Date;
 
   @ManyToOne(() => User, (user) => user.tasks)
-  @JoinColumn()
-  public user?: User;
+  @JoinColumn({
+    name: "user_id"
+  })
+  public user: User;
 
   constructor(
     title: string,
-    description: string,
-    deadline: string,
+    user: User,
+    description?: string,
+    deadline?: Date,
     id?: string,
-    user?: User,
   ) {
     this.id = id;
     this.title = title;

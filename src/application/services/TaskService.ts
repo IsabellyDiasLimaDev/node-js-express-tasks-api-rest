@@ -1,10 +1,14 @@
+import { TaskDTO } from "../../data/dtos/TaskDTO";
+import { TaskMapper } from "../../data/dtos/mappers/TaskMapper";
 import { Task } from "../../data/models/Task";
 import { TaskRepository } from "../../data/repositories/TaskRepository";
 
 export class TaskService {
   taskRepository = new TaskRepository();
 
-  async saveTask(task: Task) {
+  async saveTask(taskDto: TaskDTO) {
+    const task = await TaskMapper.toEntity(taskDto);
+    
     return this.taskRepository.saveTask(task);
   }
 
