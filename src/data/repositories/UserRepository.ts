@@ -19,7 +19,6 @@ export class UserRepository {
 
   async getUsers(): Promise<User[]> {
     const users = await this.userRepository.find();
-
     if (users.length === 0) {
       throw new Error("Não existem usuários cadastrados");
     }

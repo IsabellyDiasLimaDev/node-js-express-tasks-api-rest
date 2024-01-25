@@ -1,10 +1,10 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { BeforeInsert, Column, Entity, OneToMany, PrimaryColumn } from "typeorm";
+import { v4 as uuidv4 } from "uuid";
 import { Task } from "./Task";
 
 @Entity("tbl_user")
 export class User {
-  @PrimaryGeneratedColumn("uuid")
-  @Column({
+  @PrimaryColumn({
     name: "uuid",
     type: "varchar",
     length: 36
@@ -30,6 +30,13 @@ export class User {
   public password: string;
   @OneToMany(() => Task, (task) => task.user)
   public tasks?: Task[];
+
+  @BeforeInsert()
+  generateId() {
+    if (!this.id) {
+      this.id = uuidv4();
+    }
+  }
 
   constructor(
     id: string,

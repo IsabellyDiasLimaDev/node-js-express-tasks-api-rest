@@ -7,7 +7,8 @@ export class UserController {
     userService = new UserService();
 
     async getUsers(request: Request, response: Response) {
-
+        const users = await this.userService.getUsers();
+        return response.status(200).json(users);
     }
 
     async createUser(request: Request, response: Response) {

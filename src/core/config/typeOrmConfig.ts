@@ -1,11 +1,12 @@
 import { DataSource } from "typeorm";
 import { Task } from "../../data/models/Task";
 import { User } from "../../data/models/User";
+import "dotenv/config";
 
 const { DBHOST, DBPORT, DBUSERNAME, DBPASSWORD, DBNAME } = process.env;
 
 export const typeOrmConfig = new DataSource({
-  type: "postgres",
+  type: "mariadb",
   host: DBHOST,
   port: Number(DBPORT),
   username: String(DBUSERNAME),

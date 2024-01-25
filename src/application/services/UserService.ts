@@ -14,7 +14,7 @@ export class UserService {
   async getUsers() {
     const users = await this.userRepository.getUsers();
     const usersDto = users.map((user) => {
-      UserMapper.toDto(user);
+      return UserMapper.toDto(user);
     });
     return usersDto;
   }

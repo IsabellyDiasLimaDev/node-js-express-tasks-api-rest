@@ -1,16 +1,17 @@
 import {
+  BeforeInsert,
   Column,
   Entity,
   JoinColumn,
   ManyToOne,
-  PrimaryGeneratedColumn,
+  PrimaryColumn
 } from "typeorm";
+import { v4 as uuidv4 } from "uuid";
 import { User } from "./User";
 
 @Entity("tbl_task")
 export class Task {
-  @PrimaryGeneratedColumn("uuid")
-  @Column({
+  @PrimaryColumn({
     name: "uuid",
     type: "varchar",
     length: 36
@@ -41,6 +42,13 @@ export class Task {
     name: "user_id"
   })
   public user: User;
+
+  @BeforeInsert()
+  generateId() {
+    if (!this.id) {
+      this.id = uuidv4();
+    }
+  }
 
   constructor(
     title: string,
