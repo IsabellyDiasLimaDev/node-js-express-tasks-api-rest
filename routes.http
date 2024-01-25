@@ -1,0 +1,24 @@
+POST http://localhost:3000/tasks
+Content-Type: application/json
+
+{
+    "title": "Tarefa 1", 
+    "description": "Esta tarefa é a primeira", 
+    "deadline": "amanhã",
+    "userId": "7b22dcd6-d598-421e-bc70-edca883f4ad2"
+}
+
+###
+
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "name": "user1", 
+    "email": "user1@gmail.com", 
+    "password": "password"
+}
+
+###
+
+GET http://localhost:3000/users

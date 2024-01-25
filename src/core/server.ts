@@ -1,16 +1,16 @@
 import express from "express";
-import { Router, Request, Response } from "express";
+import taskRoute from "../application/routes/TaskRoutes";
+import userRoute from "../application/routes/UserRoutes";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 
-const route = Router();
-
 app.use(express.json());
 
-route.get("/", (req: Request, res: Response) => {
-  res.json({ message: "Hello world" });
-});
+app.use("/tasks", taskRoute);
 
-app.use(route);
+app.use("/users", userRoute);
 
-app.listen(3333, () => "server running");
+app.listen(3000, () => "server running");
