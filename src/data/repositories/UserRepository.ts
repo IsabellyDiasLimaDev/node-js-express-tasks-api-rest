@@ -42,7 +42,6 @@ export class UserRepository {
 
   async updateUser(user: User): Promise<User> {
     const hasId = await this.userRepository.hasId(user);
-
     if (!hasId) {
       throw new Error("Não existe usuários a serem editados");
     }
