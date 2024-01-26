@@ -13,12 +13,12 @@ export class UserService {
     return await UserMapper.toDto(user); 
   }
 
-  async getUsers() {
-    const users = await this.userRepository.getUsers();
-    const usersDto = users.map((user) => {
+  async getUsers(skip: number, take: number): Promise<[UserDto[], number]> {
+    const [users, totalUsers]: [User[], number] = await this.userRepository.getUsers(skip, take);
+    const usersDto: UserDto[] = users.map((user) => {
       return UserMapper.toDto(user);
     });
-    return usersDto;
+    return [usersDto, totalUsers];
   }
 
   async getUserById(id: string): Promise<UserDto> {

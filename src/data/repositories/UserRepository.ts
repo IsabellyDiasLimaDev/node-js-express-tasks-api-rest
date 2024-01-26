@@ -17,13 +17,9 @@ export class UserRepository {
     return this.userRepository.save(user);
   }
 
-  async getUsers(): Promise<User[]> {
-    const users = await this.userRepository.find();
-    if (users.length === 0) {
-      throw new Error("Não existem usuários cadastrados");
-    }
-
-    return users;
+  async getUsers(skip: number, take: number): Promise<[User[], number]> {
+    const [users, totalUsers]: [User[], number] = await this.userRepository.findAndCount({skip, take});
+    return [users, totalUsers];
   }
 
   async getUserById(id: string): Promise<User> {

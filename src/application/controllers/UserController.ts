@@ -6,8 +6,19 @@ export class UserController {
     userService = new UserService();
 
     async getUsers(request: Request, response: Response) {
-        const users = await this.userService.getUsers();
-        return response.status(200).json(users);
+        const { page, itemsPerPage } = request.query;
+
+        const skip = (parseInt(page as string) - 1) * parseInt(itemsPerPage as string); // Calcular quantos registros pular
+        const take = parseInt(itemsPerPage as string); // Quantidade de registros a serem retornados
+
+        const [usersDto, totalUsers]: [UserDto[], number] = await this.userService.getUsers(skip, take);
+        const totalPages = Math.ceil(totalUsers/take)
+        return response.status(200).json({
+            "page": page,
+            "total pages": totalPages,
+            "total users": totalUsers,
+            "users": usersDto
+        });
     }
 
     async createUser(request: Request, response: Response) {
