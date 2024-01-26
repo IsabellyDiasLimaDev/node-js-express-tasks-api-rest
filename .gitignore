@@ -4,5 +4,4 @@ build/
 dist/
 *.yml
 *.log
-.env
 .env.prod
