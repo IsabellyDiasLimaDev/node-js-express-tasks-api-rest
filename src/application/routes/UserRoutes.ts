@@ -13,4 +13,16 @@ userRoute.post("/", (req: Request, res: Response) => {
     userController.createUser(req, res);
 });
 
+userRoute.put("/:id", (req: Request, res: Response) => {
+    userController.updateUser(req, res);
+});
+
+userRoute.get("/:id", (req: Request, res: Response) => {
+    userController.getUserById(req, res);
+});
+
+userRoute.delete("/:id", (req: Request, res: Response) => {
+    userController.deleteUser(req, res);
+});
+
 export default userRoute;

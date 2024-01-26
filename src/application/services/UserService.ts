@@ -1,3 +1,4 @@
+import { validate } from "uuid";
 import { UserDto } from "../../data/dtos/UserDTO";
 import { UserMapper } from "../../data/dtos/mappers/UserMapper";
 import { User } from "../../data/models/User";
@@ -7,8 +8,9 @@ export class UserService {
   userRepository = new UserRepository();
 
   async saveUser(userDto: UserDto) {
-    const user = await UserMapper.toEntity(userDto);
-    return this.userRepository.saveUser(user);
+    let user = await UserMapper.toEntity(userDto);
+    user = await this.userRepository.saveUser(user);
+    return await UserMapper.toDto(user); 
   }
 
   async getUsers() {
@@ -20,6 +22,9 @@ export class UserService {
   }
 
   async getUserById(id: string): Promise<UserDto> {
+    if (!validate(id)) {
+      throw new Error("Id com padrão inválido, por favor verificá-lo")
+    }
     const user: User = await this.userRepository.getUserById(id);
     const usersDto: UserDto = UserMapper.toDto(user);
 
@@ -33,6 +38,9 @@ export class UserService {
   }
 
   async deleteUser(id: string) {
+    if (!validate(id)) {
+      throw new Error("Id com padrão inválido, por favor verificá-lo")
+    }
     return this.userRepository.deleteUser(id);
   }
 }
