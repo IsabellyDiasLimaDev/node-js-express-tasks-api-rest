@@ -7,6 +7,7 @@
 
   - [Installation](#installation)
   - [Endpoints Manual](#endpoints-manual)
+  - [Collection](#collection)
   - [Tasks endpoint](#tasks-endpoint)
   - [Project Structure](#project-structure)
   - [Data Schemas](#data-schemas)
@@ -35,6 +36,10 @@ Following these steps, just run the project start command
 ```
 npm run dev
 ```
+
+## Collection
+
+[insomnia-collection](https://github.com/IsabellyDiasLimaDev/node-js-express-tasks-api-rest/blob/main/insomnia/Insomnia_2024-01-26.json)
 
 ## Endpoints Manual
 
@@ -73,6 +78,8 @@ Below is the current project directory structure:
     ├── mariadb
         ├── docker-compose.yml
         ├── init.sql
+├── insomnia
+    ├── Insomnia_2024-01-26.json
 ├── src
     ├── application
         ├── controllers
