@@ -40,16 +40,17 @@ npm run dev
 
 ### Users endpoint
 
-| Method | Route            | Functionality                   | Body Data                           | Query Params | Auth Required | Content Return   |
-| ------ | ---------------- | ------------------------------- | ----------------------------------- | ------------ | ------------- | ---------------- |
-| POST   | /users           | create a new user               | { email: string, password: string } | empty        | false         | empty            |
-| GET    | /users           | show all users                | empty                               | page: number | false         | User Schema List |
-| GET    | /users/:id       | show users                     | empty                               | empty        | false         | User Schema      |
-| GET    | users?search=    | show users with criteria       | empty                               | empty        | false         | User Schema List |
-| PUT    | /users/:id       | edit users                     | { email: string, password: string } | empty        | false         | empty            |
-| DELETE | /users/:id       | delete users                   | empty                               | empty        | false         | empty            |
+| Method | Route            | Functionality       | Body Data                                               | Query Params | Auth Required | Content Return   |
+| ------ | ---------------- | ------------------- | ------------------------------------------------------- | ------------ | ------------- | ---------------- |
+| POST   | /users           | create a new user   | { "name": string, "email": string, "password": string } | empty        | false         | User Schema      |
+| GET    | /users           | show all users      | empty                                                   | empty        | false         | User Schema List |
+| GET    | /users/:id       | show users          | empty                                                   | empty        | false         | User Schema      |
+| PUT    | /users/:id       | edit users          | { "name": string, "email": string, "password": string } | empty        | false         | User Schema      |
+| DELETE | /users/:id       | delete users        | empty                                                   | empty        | false         | empty            |
 
-### Tasks endpoint
+<!-- | GET    | users?search=    | show users with criteria       | empty                               | empty        | false         | User Schema List | -->
+
+<!-- ### Tasks endpoint
 
 | Method | Route            | Functionality                   | Body Data                           | Query Params | Auth Required | Content Return   |
 | ------ | ---------------- | ------------------------------- | ----------------------------------- | ------------ | ------------- | ---------------- |
@@ -58,7 +59,7 @@ npm run dev
 | GET    | /videos/:id       | show video                     | empty                               | empty        | false         | User Schema      |
 | GET    | videos?search=    | show video with criteria       | empty                               | empty        | false         | User Schema List |
 | PUT    | /videos/:id       | edit video                     | { email: string, password: string } | empty        | false         | empty            |
-| DELETE | /videos/:id       | delete video                   | empty                               | empty        | false         | empty            |
+| DELETE | /videos/:id       | delete video                   | empty                               | empty        | false         | empty            | -->
 
 
 ## Project Structure

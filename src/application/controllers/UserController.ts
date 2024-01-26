@@ -40,4 +40,13 @@ export class UserController {
         return response.status(200).json(userDto);
     }
 
+    async deleteUser(request: Request, response: Response) {
+        const { id } = request.params;
+        if (!id) {
+            throw new Error("Parametro id não encontrado")
+        }
+        await this.userService.deleteUser(id);
+        return response.status(204).send();
+    }
+
 }
